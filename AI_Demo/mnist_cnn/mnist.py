@@ -95,7 +95,7 @@ def define_mnist_flags():
   flags.adopt_module_key_flags(flags_core)
   flags_core.set_defaults(data_dir='../dataset/mnist',
                           model_dir='./mnist_cnn_model',
-                          batch_size=100,
+                          batch_size=64,
                           train_epochs=20)
 
 
@@ -103,6 +103,8 @@ def model_fn(features, labels, mode, params):
   """The model_fn argument for creating an Estimator."""
   model = create_model(params['data_format'])
   image = features
+
+
   if isinstance(image, dict):
     image = features['image']
 
