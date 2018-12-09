@@ -14,13 +14,13 @@ def process_image(img):
         img: original image.
 
     # Returns
-        image: ndarray(64, 64, 3), processed image.
+        image: ndarray(416, 416, 3), processed image.
     """
     image = cv2.resize(img, (416, 416),
                        interpolation=cv2.INTER_CUBIC)
     image = np.array(image, dtype='float32')
     image /= 255.
-    image = np.expand_dims(image, axis=0)
+    image = np.expand_dims(image, axis=0)   #(416,416,3) -> (1,416,416,3)
 
     return image
 
